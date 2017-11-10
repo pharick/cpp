@@ -2,7 +2,7 @@
 using namespace std;
 
 int main() {
-  int x, y;
+  long long int x, y;
   cin >> x >> y;
   unsigned int circle = x*x + y*y;
   cout << ((y > x*x - 6 && circle < 16) ||
