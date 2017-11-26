@@ -2,8 +2,10 @@
 using namespace std;
 
 int main() {
-  long long int n, m;
-  cin >> n >> m;
-  cout << n + m << endl;
+  int a, b;
+  cin >> a >> b;
+
+  cout << (a > b ? a : b) << endl;
+
   return 0;
 }
