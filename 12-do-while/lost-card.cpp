@@ -2,15 +2,15 @@
 using namespace std;
 
 int main() {
-  // short number, card, sum = 1;
-  // cin >> number;
-  //
-  // for (short i = 2; i <= number; i++) {
-  //   sum += i;
-  //   cin >> card;
-  //   sum -= card;
-  // }
+  int number, card, sum = 1;
+  cin >> number;
 
-  cout << 3 << endl;
+  for (int i = 2; i <= number; i++) {
+    sum += i;
+    cin >> card;
+    sum -= card;
+  }
+
+  cout << sum << endl;
   return 0;
 }
