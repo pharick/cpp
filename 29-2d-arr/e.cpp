@@ -9,7 +9,7 @@ int main() {
   for (short i = 0; i < n; i++)
     arr[0][i] = i + 1;
 
-  for (short i = 0; i < n; i++) {
+  for (short i = 0; i < n - 1; i++) {
     int tmp = arr[i][0];
     for (int j = 0; j < n - 1; j++) {
       arr[i + 1][j] = arr[i][j + 1];
