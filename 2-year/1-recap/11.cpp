@@ -3,13 +3,14 @@
 using namespace std;
 
 int findRamanujan(int n) {
+  n += 1;
+
   while (true) {
     bool count = false;
     
-    for (int i = 1; i <= n; i++) {
+    for (int i = 1; i <= 100; i++) {
       for (int j = 1; j <= i; j++) {
         if (i*i*i + j*j*j == n) {
-          cout << i << " " << j << " " << n << endl;
           if (count) {
             return n;
           } else {
@@ -27,7 +28,6 @@ int main() {
   int n;
   cin >> n;
 
-  cout << 4096*4096*4096 + 16*16*16 << endl;
-  // cout << findRamanujan(n) << endl;
+  cout << findRamanujan(n) << endl;
   return 0;
 }
