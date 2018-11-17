@@ -4,13 +4,14 @@
 using namespace std;
 
 int main() {
-    ifstream in("in.txt");
+    fstream in("in.txt", ios::in);
 
     short count = 0;
     bool dig_start = false;
     char symbol;
 
-    while (in.get(symbol)) {
+    while (!in.eof()) {
+        in.get(symbol);
 
         if (isdigit(symbol)) {
             if (!dig_start) {
