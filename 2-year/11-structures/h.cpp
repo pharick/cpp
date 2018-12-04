@@ -41,6 +41,7 @@ int main()
   {
     students[i] = read_student();
     result += will_graduate(&students[i], n);
+    delete [] students[i].marks;
   }
 
   cout << result << endl;

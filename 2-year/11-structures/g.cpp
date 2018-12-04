@@ -42,6 +42,7 @@ int main()
   {
     students[i] = read_student();
     cout << fixed << setprecision(6) << get_student_avg_mark(&students[i]) << endl;
+    delete [] students[i].marks;
   }
 
   return 0;

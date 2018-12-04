@@ -41,6 +41,7 @@ int main()
   {
     students[i] = read_student();
     print_student(&students[i]);
+    delete [] students[i].marks;
   }
 
   return 0;
