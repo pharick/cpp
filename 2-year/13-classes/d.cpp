@@ -141,23 +141,23 @@ int main()
     char command[9] = {};
     std::cin.getline(command, 9);
 
-    if (std::strcmp(command, "Wait") == 0)
+    if (!std::strcmp(command, "Wait"))
     {
       student.wait();
     }
-    else if (std::strcmp(command, "Eat") == 0)
+    else if (!std::strcmp(command, "Eat"))
     {
       student.eat();
     }
-    else if (std::strcmp(command, "Study") == 0)
+    else if (!std::strcmp(command, "Study"))
     {
       student.study();
     }
-    else if (std::strcmp(command, "Sleep") == 0)
+    else if (!std::strcmp(command, "Sleep"))
     {
       student.sleep();
     }
-    else if (std::strcmp(command, "Watch TV") == 0)
+    else if (!std::strcmp(command, "Watch TV"))
     {
       student.watch_tv();
     }
