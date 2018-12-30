@@ -1,0 +1,157 @@
+#include <iostream>
+#include <iomanip>
+#include <cstring>
+
+class Student
+{
+private:
+  char name[51];
+  char surname[51];
+  int hp;
+  int energy;
+  int iq;
+  int sanity;
+  int excitement;
+  int change_field(int &field, int delta);
+  void change_params(int hp, int energy, int iq, int sanity, int excitement);
+
+public:
+  bool is_alive();
+  void eat();
+  void wait();
+  void study();
+  void sleep();
+  void watch_tv();
+  void show();
+  Student(char name[51], char surname[51]);
+};
+
+Student::Student(char name[51], char surname[51])
+{
+  strcpy(this->name, name);
+  strcpy(this->surname, surname);
+  this->hp = 100;
+  this->energy = 100;
+  this->iq = 20;
+  this->sanity = 100;
+  this->excitement = 50;
+}
+
+bool Student::is_alive()
+{
+  return this->hp > 0;
+}
+
+int Student::change_field(int &field, int delta)
+{
+  field += delta;
+  if (field < 0)
+    field = 0;
+  else if (field > 100)
+    field = 100;
+  return field;
+}
+
+void Student::change_params(int hp, int energy, int iq, int sanity, int excitement)
+{
+  change_field(this->hp, hp);
+  change_field(this->energy, energy);
+  change_field(this->iq, iq);
+  change_field(this->sanity, sanity);
+  change_field(this->excitement, excitement);
+}
+
+void Student::eat()
+{
+  if (this->is_alive())
+    this->change_params(1, 7, -1, 0, -2);
+}
+
+void Student::wait()
+{
+  if (this->is_alive())
+    this->change_params(1, -3, 0, 0, -3);
+}
+
+void Student::study()
+{
+  if (this->is_alive())
+    this->change_params(-2, -4, 5, -5, -2);
+}
+
+void Student::sleep()
+{
+  if (this->is_alive())
+    this->change_params(2, -2, 0, 7, 0);
+}
+
+void Student::watch_tv()
+{
+  if (this->is_alive())
+    this->change_params(-2, -3, -3, 1, 5);
+}
+
+void Student::show()
+{
+  std::cout << this->name << " " << this->surname << ": HP = "
+            << std::setfill('0') << std::setw(3)
+            << this->hp << ", Energy = "
+            << std::setfill('0') << std::setw(3)
+            << this->energy << ", IQ = "
+            << std::setfill('0') << std::setw(3)
+            << this->iq << ", Sanity = "
+            << std::setfill('0') << std::setw(3)
+            << this->sanity << ", Excitement = "
+            << std::setfill('0') << std::setw(3)
+            << this->excitement << ".";
+
+  if (this->hp <= 0)
+  {
+    std::cout << " Game over.";
+  }
+
+  std::cout << std::endl;
+}
+
+int main()
+{
+  char name[51], surname[51];
+  std::cin >> name >> surname;
+
+  Student student(name, surname);
+
+  int n;
+  std::cin >> n;
+
+  for (int i = 0; i < n; i++)
+  {
+    char command[9] = {};
+    std::cin >> command;
+
+    if (!strcmp(command, "Wait"))
+    {
+      student.wait();
+    }
+    else if (!strcmp(command, "Eat"))
+    {
+      student.eat();
+    }
+    else if (!strcmp(command, "Study"))
+    {
+      student.study();
+    }
+    else if (!strcmp(command, "Sleep"))
+    {
+      student.sleep();
+    }
+    else if (!strcmp(command, "Watch"))
+    {
+      student.watch_tv();
+      std::cin >> command;
+    }
+
+    student.show();
+  }
+
+  return 0;
+}
