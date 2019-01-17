@@ -9,9 +9,9 @@ int main() {
     char line[101] = {};
 
     short count = 0;
-    while (in.getline(line, 100)) {
-        count++;
-        if (count != 3) out << line << endl;
+    while (!in.eof()) {
+        in.get(symb);
+        std::cout << smb;
     }
 
     in.close();
