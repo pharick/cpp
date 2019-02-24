@@ -19,6 +19,8 @@ Dictionary::Dictionary() {
 
 Dictionary::~Dictionary() {
     delete [] this->data;
+
+    for (int i = 0; i < this->len; i++) delete [] this->keys[i];
     delete [] this->keys;
 }
 
