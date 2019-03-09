@@ -10,7 +10,11 @@ public:
   friend ostream &operator << (ostream&, const Fraction&);
 
   Fraction operator + (const Fraction&);
-  Fraction operator +(const Fraction&);
+  Fraction operator + (const int&);
+  Fraction operator + (const double&);
+
+  friend Fraction operator + (int v, Fraction f);
+  friend Fraction operator + (double v, Fraction f);
 
   Fraction operator * (const Fraction&);
   int get_a() { return a; }
@@ -35,9 +39,33 @@ ostream &operator << (ostream& out, const Fraction& f) {
   return out;
 }
 
-Fraction Fraction::operator +(const Fraction &b) {
+Fraction Fraction::operator + (const Fraction &b) {
   int new_b = this->b * b.b;
   int new_a = this->a * b.b + b.a * this->b;
+  return Fraction(new_a, new_b);
+}
+
+Fraction Fraction::operator + (const int& b) {
+  int new_b = this->b;
+  int new_a = this->a + b * this->b;
+  return Fraction(new_a, new_b);
+}
+
+Fraction Fraction::operator + (const double& b) {
+  int new_b = this->b;
+  int new_a = this->a + b * this->b;
+  return Fraction(new_a, new_b);
+}
+
+Fraction operator + (int n, Fraction f) {
+  int new_b = f.b;
+  int new_a = f.a + n * f.b;
+  return Fraction(new_a, new_b);
+}
+
+Fraction operator + (double n, Fraction f) {
+  int new_b = f.b;
+  int new_a = f.a + n * f.b;
   return Fraction(new_a, new_b);
 }
 
