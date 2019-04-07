@@ -12,6 +12,11 @@ public:
   Binary(char *s);
   void show() const;
   int to_int() const;
+
+  Binary operator + (const Binary &second);
+  Binary operator - (const Binary &second);
+  Binary operator * (const Binary &second);
+  Binary operator / (const Binary &second);
 };
 
 void Binary::fill_zeros() {
@@ -61,11 +66,33 @@ void Binary::show() const {
     }
 }
 
+Binary Binary::operator + (const Binary &second) {
+  return Binary(this->to_int() + second.to_int());
+}
+
+Binary Binary::operator - (const Binary &second) {
+  return Binary(this->to_int() - second.to_int());
+}
+
+Binary Binary::operator * (const Binary &second) {
+  return Binary(this->to_int() * second.to_int());
+}
+
+Binary Binary::operator / (const Binary &second) {
+  return Binary(this->to_int() / second.to_int());
+}
+
 int main() {
-  int n;
-  std::cin >> n;
-  Binary bin(n);
-  bin.show();
+  char line1[1000000] = {}, line2[1000000] = {};
+  std::cin >> line1 >> line2;
+  Binary bin1(line1), bin2(line2);
+  (bin1 + bin2).show();
+  std::cout << std::endl;
+  (bin1 - bin2).show();
+  std::cout << std::endl;
+  (bin1 * bin2).show();
+  std::cout << std::endl;
+  (bin1 / bin2).show();
   std::cout << std::endl;
   return 0;
 }
